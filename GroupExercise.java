@@ -79,54 +79,159 @@ public class Queues {
 
 }
 
+public class Prompts {
+
+    public static String getOperationsPrompt(char x){
+        if (x == 'S') {
+            return """
+                \nStack Operations
+                [A] Push: Add an element to the top of a stack
+                [B] Pop: Remove an element from the top of a stack
+                [C] IsEmpty: Check if the stack is empty
+                [D] IsFull: Check if the stack is full
+                [E] Peek: Get the value of the top element without removing it
+                [X] Back to Menu
+    
+                Enter the operation: 
+                """;    
+        }
+        else if (x == 'Q') {
+            return """
+                \nQueue Operations
+                [A] Enqueue: Add an element to the rear of the queue
+                [B] Dequeue: Remove an element from the front of the queue
+                [C] IsEmpty: Check if the queue is empty
+                [D] IsFull: Check if the queue is full
+                [E] Peek: Get the value of the front element without removing it
+                [X] Back to Menu
+
+                Enter the operation:
+                """;
+        }
+
+        return "\nInvalid input";
+    }
+
+    public static void StackOperations (Stacks stack, Scanner scanner){
+        char operation;
+        
+        do {
+            System.out.println(Prompts.getOperationsPrompt('S'));
+            operation = scanner.next().toUpperCase().charAt(0);
+
+            switch (operation) {
+                case 'A':
+        
+                    break;
+
+                case 'B':
+                
+                    break;
+
+                case 'C':
+                
+                    break;
+
+                case 'D':
+                
+                    break;
+
+                case 'E':
+                
+                    break;
+
+                case 'X':
+                    return;
+                default:
+                System.out.println("Invalid Input.");
+                    break;
+            } 
+        } while (operation != 'X');
+    }
+
+    public static void QueueOperations (Queues queue, Scanner scanner){
+        char operation;
+        
+        do {
+            System.out.println(Prompts.getOperationsPrompt('Q'));
+            operation = scanner.next().toUpperCase().charAt(0);
+
+            switch (operation) {
+                case 'A':
+                System.out.print("Enter value to enqueue: ");
+                queue.Enqueue(scanner.nextInt());
+                    break;
+
+                case 'B':
+                
+                    break;
+
+                case 'C':
+                String promptIsEmpty = queue.isEmpty() == true ? "empty." : "not empty.";
+                System.out.print("Queue is " + promptIsEmpty);
+                    break;
+
+                case 'D':
+                String promptIsFull = queue.isFull() == true ? "full." : "not yet full.";
+                System.out.print("Queue is " + promptIsFull);
+                    break;
+
+                case 'E':
+                
+                    break;
+
+                case 'X':
+                    return;
+                default:
+                System.out.println("Invalid Input.");
+                    break;
+            } 
+        } while (operation != 'X');
+    }
+}
 
     
-    public static void main(String[] args) throws IOException{
-    // GroupExercise exercise = new GroupExercise();
-    // Queues queues = exercise.new Queues(new int[5]);  
+public static void main(String[] args) throws IOException{
+    GroupExercise exercise = new GroupExercise();
+    Scanner scanner = new Scanner(System.in);
 
-    Scanner sc = new Scanner(System.in);
+    System.out.print("Enter the size of the array: ");
+    int arraySize = scanner.nextInt();
 
-    System.out.print("""
-    Basic Stack and Queue Operations
+    do {
+        System.out.print("""
+        Basic Stack and Queue Operations
 
-    [S] Stack
-    [Q] Queue
-    [X] Exit
+        [S] Stack
+        [Q] Queue
+        [X] Exit
 
-    Enter the data structure you want to use: 
-    """);
+        Enter the data structure you want to use: 
+        """);
 
-    char userResponse = sc.next().toUpperCase().charAt(0);
+        char userResponse = scanner.next().toUpperCase().charAt(0);
 
-    String prompt = """
-    Methods
-    [A] Push: Add an element to the top of a stack
-    [B] Pop: Remove an element from the top of a stack
-    [C] IsEmpty: Check if the stack is empty
-    [D] IsFull: Check if the stack is full
-    [E] Peek: Get the value of the top element without removing it
-    [X] Exit
-            """;
+        switch (userResponse) {
+            case 'S':
+                Stacks stack = exercise.new Stacks(new int[arraySize]);
+                Prompts.StackOperations(stack, scanner);
+                break;
 
-    switch (userResponse) {
-        case 'S':
-            System.out.println("Stack\n\n" + prompt);
-            break;
+            case 'Q':
+                Queues queue = exercise.new Queues(new int[arraySize]);
+                Prompts.QueueOperations(queue, scanner);
+                break;
 
-        case 'Q':
-            System.out.println("Queue\n\n" + prompt);
-            break;
-
-        case 'X':
+            case 'X':
+            System.out.println("\nApplication exited.");
+            scanner.close();
             System.exit(0);
-            break;
+                break;
 
-        default:
-            break;
-    }
-
-    sc.close();
-    
-    }
+            default:
+            System.out.println(Prompts.getOperationsPrompt(userResponse));
+                break;
+        }
+    } while (true);
+}
 }
