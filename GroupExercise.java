@@ -152,8 +152,6 @@ class GroupExercise {
                 System.out.print(Prompts.getOperationsPrompt('Q'));
                 operation = scanner.next().toUpperCase().charAt(0);
                 scanner.nextLine();
-
-
                 switch (operation) {
                     case 'A':
                         System.out.print("Enter value to enqueue: ");
@@ -177,7 +175,7 @@ class GroupExercise {
                         break;
 
                     case 'E':
-
+                         System.out.print("Element at front:  " + queue.Peek() + "\n");
                         break;
 
                     case 'X':
