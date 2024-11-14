@@ -72,9 +72,9 @@ public class Queues {
 
     public void DisplayElements(){
         for (int i : this.givenArray) {
-            System.err.print(i + " ");
+            System.out.print(i + " ");
         }
-        System.err.println();
+        System.out.println();
     }
 
 }
