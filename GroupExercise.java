@@ -45,7 +45,48 @@ public class Queues {
             EnqueueEnabled = true;
         }
         
+        Scanner sc = new Scanner(System.in);
 
+        System.out.print("""
+        Basic Stack and Queue Operations
+
+        [S] Stack
+        [Q] Queue
+        [X] Exit
+
+        Enter the data structure you want to use: 
+        """);
+
+        char userResponse = sc.next().toUpperCase().charAt(0);
+
+        String prompt = """
+        Methods
+        [A] Push: Add an element to the top of a stack
+        [B] Pop: Remove an element from the top of a stack
+        [C] IsEmpty: Check if the stack is empty
+        [D] IsFull: Check if the stack is full
+        [E] Peek: Get the value of the top element without removing it
+        [X] Exit
+                """;
+
+        switch (userResponse) {
+            case 'S':
+                System.out.println("Stack\n\n" + prompt);
+                break;
+
+            case 'Q':
+                System.out.println("Queue\n\n" + prompt);
+                break;
+
+            case 'X':
+                System.exit(0);
+                break;
+
+            default:
+                break;
+        }
+
+        sc.close();
     }
 
     public void Dequeue(){
