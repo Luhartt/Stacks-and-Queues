@@ -15,9 +15,7 @@ class GroupExercise {
 
         private int[] givenArray;
         private int NumberOfElements = 0;
-        private Boolean EnqueueEnabled = true;
-        private int LeftIndex = 0; // left pointer (rear) 
-        private int RightIndex = 0; // Right pointer (front)
+        private int LeftIndex = 0; // Right pointer (front)
 
         public Queues(int[] arr) {
             this.givenArray = arr;
@@ -35,20 +33,10 @@ class GroupExercise {
                 DisplayElements();
             }
 
-            if (this.RightIndex == this.NumberOfElements) {
-                System.out.println("Overflow!!!!");
-                EnqueueEnabled = false;
-            }
-
-            if (this.isEmpty()) {
-                EnqueueEnabled = true;
-            }
-
         }
 
         public void Dequeue() {
 
-            // left index ++
         }
 
         public boolean isEmpty() {
@@ -158,11 +146,9 @@ class GroupExercise {
                         System.out.print("Enter value to enqueue: ");
                         queue.Enqueue(scanner.nextInt());
                         scanner.nextLine();
-
                         break;
 
                     case 'B':
-
                         break;
 
                     case 'C':
@@ -176,7 +162,10 @@ class GroupExercise {
                         break;
 
                     case 'E':
-                         System.out.print("Element at front:  " + queue.Peek() + "\n");
+                        if (queue.isEmpty()) {
+                        } else {
+                            System.out.println("Element at front:  " + queue.Peek() + "\n");
+                        }
                         break;
 
                     case 'X':
@@ -210,7 +199,6 @@ class GroupExercise {
 
             char userResponse = scanner.next().toUpperCase().charAt(0);
             scanner.nextLine();
-
 
             switch (userResponse) {
                 case 'S':
