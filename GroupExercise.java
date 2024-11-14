@@ -16,8 +16,8 @@ class GroupExercise {
         private int[] givenArray;
         private int NumberOfElements = 0;
         private Boolean EnqueueEnabled = true;
-        private int LeftIndex = 0; // Right pointer (front)
-        private int RightIndex = 0; // left pointer (rear)
+        private int LeftIndex = 0; // left pointer (rear) 
+        private int RightIndex = 0; // Right pointer (front)
 
         public Queues(int[] arr) {
             this.givenArray = arr;
