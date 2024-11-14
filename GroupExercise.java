@@ -105,7 +105,7 @@ class GroupExercise {
             char operation;
 
             do {
-                System.out.print(Prompts.getOperationsPrompt('S'));
+                System.out.print(getOperationsPrompt('S'));
                 operation = scanner.next().toUpperCase().charAt(0);
                 scanner.nextLine();
 
@@ -144,9 +144,10 @@ class GroupExercise {
             char operation;
 
             do {
-                System.out.print(Prompts.getOperationsPrompt('Q'));
+                System.out.print(getOperationsPrompt('Q'));
                 operation = scanner.next().toUpperCase().charAt(0);
                 scanner.nextLine();
+
                 switch (operation) {
                     case 'A':
                         System.out.print("Enter value to enqueue: ");
@@ -194,7 +195,6 @@ class GroupExercise {
         System.out.print("Enter the size of the array: ");
         int arraySize = scanner.nextInt();
         scanner.nextLine();
-
 
         do {
             System.out.print("""
