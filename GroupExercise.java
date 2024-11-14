@@ -36,6 +36,7 @@ class GroupExercise {
             }
 
             if (this.RightIndex == this.NumberOfElements) {
+                System.out.println("Overflow!!!!");
                 EnqueueEnabled = false;
             }
 
