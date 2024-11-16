@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 class GroupExercise {
 
+<<<<<<< Updated upstream
 public class Stacks {
     public int[] givenArray;
 
@@ -43,6 +44,41 @@ public class Queues {
 
         if (this.isEmpty()){
             EnqueueEnabled = true;
+=======
+    public class Stacks {
+        public int[] givenArray;
+
+
+        public Stacks(int[] arr) {
+
+        }
+
+        public void Push(int x) {
+
+        }
+
+        public int Pop() {
+            return 0;
+        }
+
+        public int Peek() {
+            return 0;
+        }
+
+        public boolean isEmpty() {
+            return false;
+        }
+
+        public boolean isFull() {
+            return false;
+        }
+
+        public void displayStack() {
+            System.out.print("Current Elements: ");
+            for (int i : givenArray) {
+                System.out.print(i + " ");
+            }
+>>>>>>> Stashed changes
         }
         
 
