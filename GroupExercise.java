@@ -5,11 +5,9 @@ class GroupExercise {
 
     public class Stacks {
         private int[] givenArray;
-        private int NumberOfElements = 0;
 
         public Stacks(int[] arr) {
             this.givenArray = arr;
-            this.NumberOfElements = arr.length;
         }
 
         // Methods here
@@ -49,7 +47,7 @@ class GroupExercise {
                 this.LeftIndex += 1;
                 DisplayElements();
 
-                if (this.LeftIndex == this.RightIndex) { // Resets pointers position
+                if (this.LeftIndex == this.RightIndex) { // Resets pointers position once the queue is empty
                     this.LeftIndex = 0;
                     this.RightIndex = 0;
                 }
