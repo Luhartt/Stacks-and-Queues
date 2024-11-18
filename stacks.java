@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Stacks {
+public class stacks {
     public static int[] stack;
     public static int top = -1; 
     public static int stackSize;
