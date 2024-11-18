@@ -3,39 +3,46 @@ import java.util.Scanner;
 
 class GroupExercise {
 
-    public class Stacks {
-        public int[] givenArray;
+public class Stacks {
+    public int[] givenArray;
+
+    public Stacks(int[] arr) {
+        this.givenArray = arr;
+    }
+}
 
 
-        public Stacks(int[] arr) {
+public class Queues {
 
+    private int[] givenArray;
+    private int NumberOfElements = 0;
+    private Boolean EnqueueEnabled = true;
+    private int LeftIndex = 0; //Right pointer (front)
+    private int RightIndex = 0; //left pointer (rear)
+    
+
+    public Queues(int[] arr) {
+        this.givenArray = arr;
+        this.NumberOfElements = arr.length;
+    }
+
+    public int Peek(){
+         return this.LeftIndex  == this.NumberOfElements ? -1 : this.givenArray[this.LeftIndex];
+    } 
+
+    public void Enqueue(int x){
+        if(this.EnqueueEnabled){
+            this.givenArray[this.RightIndex] = x;
+            this.RightIndex++;
+            DisplayElements();
         }
 
-        public void Push(int x) {
-
+        if(this.RightIndex == this.NumberOfElements){
+            EnqueueEnabled = false;
         }
 
-        public int Pop() {
-            return 0;
-        }
-
-        public int Peek() {
-            return 0;
-        }
-
-        public boolean isEmpty() {
-            return false;
-        }
-
-        public boolean isFull() {
-            return false;
-        }
-
-        public void displayStack() {
-            System.out.print("Current Elements: ");
-            for (int i : givenArray) {
-                System.out.print(i + " ");
-            }
+        if (this.isEmpty()){
+            EnqueueEnabled = true;
         }
         
 
