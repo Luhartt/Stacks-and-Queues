@@ -4,54 +4,15 @@ import java.util.Scanner;
 class GroupExercise {
 
     public class Stacks {
-        public int[] givenArray;
-        public int currentIndex = 0;
-        public int size;
+        private int[] givenArray;
+        private int NumberOfElements = 0;
 
         public Stacks(int[] arr) {
             this.givenArray = arr;
-            this.size = arr.length;
+            this.NumberOfElements = arr.length;
         }
 
-        public void Push(int x) {
-            if(isFull()) {System.out.println("Overflow!!"); return;}
-
-            this.givenArray[currentIndex] = x;
-            this.currentIndex++;
-            displayStack();
-
-        }
-
-        public int Pop() {
-            if(isEmpty()) {System.out.println("Underflow!! "); return - 1;}
-            int pop = this.givenArray[currentIndex-1];
-            this.givenArray[currentIndex-1] = 0;
-            this.currentIndex--;
-            System.out.println("Removed element: " + pop);
-            displayStack();
-            return pop;
-
-        }
-
-        public int Peek() {
-            return isEmpty() ? -1 : this.givenArray[currentIndex - 1];
-        }
-
-        public boolean isEmpty() {
-            return this.currentIndex == 0 ? true : false;
-        }
-
-        public boolean isFull() {
-            return this.currentIndex == this.size ? true : false;
-        }
-
-        public void displayStack() {
-            System.out.print("Current Elements: ");
-            for (int i : givenArray) {
-                System.out.print(i + " ");
-            }
-        }
-
+        // Methods here
     }
 
     public class Queues {
@@ -123,6 +84,7 @@ class GroupExercise {
                         [C] IsEmpty: Check if the stack is empty
                         [D] IsFull: Check if the stack is full
                         [E] Peek: Get the value of the top element without removing it
+
                         [X] Back to Menu
 
                         Enter the operation: """ + " ";
@@ -134,6 +96,7 @@ class GroupExercise {
                         [C] IsEmpty: Check if the queue is empty
                         [D] IsFull: Check if the queue is full
                         [E] Peek: Get the value of the front element without removing it
+
                         [X] Back to Menu
 
                         Enter the operation: """ + " ";
@@ -152,31 +115,31 @@ class GroupExercise {
 
                 switch (operation) {
                     case 'A':
-                        System.out.print("Enter value to Push: ");
-                        stack.Push(scanner.nextInt());
-                        scanner.nextLine();
+                        // System.out.print("Enter value to Push: ");
+                        // stack.Push(scanner.nextInt());
+                        // scanner.nextLine();
                         break;
 
                     case 'B':
-                        stack.Pop();
+                        // stack.Pop();
                         break;
 
                     case 'C':
-                        String promptIsEmpty = stack.isEmpty() == true ? "empty." : "not empty.";
-                        System.out.print("Stack is " + promptIsEmpty + "\n");
+                        // String promptIsEmpty = stack.isEmpty() == true ? "empty." : "not empty.";
+                        // System.out.print("Stack is " + promptIsEmpty + "\n");
                         break;
 
                     case 'D':
-                        String promptIsFull = stack.isFull() == true ? "full." : "not full.";
-                        System.out.print("Stack is " + promptIsFull + "\n");
+                        // String promptIsFull = stack.isFull() == true ? "full." : "not full.";
+                        // System.out.print("Stack is " + promptIsFull + "\n");
                         break;
 
                     case 'E':
-                        if (stack.isEmpty()) {
-                            System.out.println("Stack is empty.");
-                        } else {
-                            System.out.println("Element at top:  " + stack.Peek() + "\n");
-                        }
+                        // if (stack.isEmpty()) {
+                        //     System.out.println("Stack is empty.");
+                        // } else {
+                        //     System.out.println("Element at top:  " + stack.Peek() + "\n");
+                        // }
                         break;
 
                     case 'X':
@@ -260,8 +223,8 @@ class GroupExercise {
 
             switch (userResponse) {
                 case 'S':
-                    Stacks stack = exercise.new Stacks(new int[arraySize]);
-                    Prompts.StackOperations(stack, scanner);
+                    // Stacks stack = exercise.new Stacks(new int[arraySize]);
+                    // Prompts.StackOperations(stack, scanner);
                     break;
 
                 case 'Q':
