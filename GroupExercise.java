@@ -16,61 +16,52 @@ public class Queues {
 
     private int[] givenArray;
     private int NumberOfElements = 0;
-    private Boolean EnqueueEnabled = true;
-    private int LeftIndex = 0; //Right pointer (front)
-    private int RightIndex = 0; //left pointer (rear)
-    
+    private int LeftIndex = 0; // Right pointer (front)
+    private int RightIndex = 0; // left pointer (rear)
 
     public Queues(int[] arr) {
         this.givenArray = arr;
         this.NumberOfElements = arr.length;
     }
 
-    public int Peek(){
-         return this.LeftIndex  == this.NumberOfElements ? -1 : this.givenArray[this.LeftIndex];
-    } 
+    public int Peek() {
+        return this.LeftIndex == this.NumberOfElements ? -1 : this.givenArray[this.LeftIndex];
+    }
 
-    public void Enqueue(int x){
-        if(this.EnqueueEnabled){
+    public void Enqueue(int x) {
+        if (this.isFull()) {
+            System.out.println("Overflow!");
+        } else { // Performs enqueue if the queue is not full
             this.givenArray[this.RightIndex] = x;
             this.RightIndex++;
             DisplayElements();
         }
+    }
 
-        if(this.RightIndex == this.NumberOfElements){
-            EnqueueEnabled = false;
+    public void Dequeue() {
+        if (this.isEmpty()) {
+            System.out.println("Underflow!");
+        } else { // Performs dequeue if the queue is not empty
+            this.givenArray[this.LeftIndex] = 0;
+            this.LeftIndex += 1;
+            DisplayElements();
+
+            if (this.LeftIndex == this.RightIndex) { // Resets pointers position
+                this.LeftIndex = 0;
+                this.RightIndex = 0;
+            }
         }
-
-        if (this.isEmpty()){
-            EnqueueEnabled = true;
-        }
-        
-
     }
 
-    public void Dequeue(){
-
-        //left index ++
+    public boolean isEmpty() {
+        return this.LeftIndex == this.RightIndex;
     }
 
-    public boolean isEmpty(){
-        return false;
-        //this.rightIndex == 0 ulit pag nag true na
+    public boolean isFull() {
+        return this.RightIndex == this.NumberOfElements;
     }
 
-    public boolean isFull (){
-        return false;
-    }
-    public int Poll(){
-
-        int Poll = this.LeftIndex == this.NumberOfElements ? -1 : this.givenArray[this.LeftIndex];
-        this.givenArray[this.LeftIndex] = 0;
-        this.LeftIndex += 1;
-        DisplayElements();
-        return Poll;
-    }
-
-    public void DisplayElements(){
+    public void DisplayElements() {
         for (int i : this.givenArray) {
             System.out.print(i + " ");
         }
