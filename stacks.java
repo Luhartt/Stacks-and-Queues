@@ -1,106 +1,77 @@
-import java.util.Scanner;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
 
 public class stacks {
-    public static int[] stack;
-    public static int top = -1; 
-    public static int stackSize;
+    List<Integer> stackList;
+    public int top = -1; 
+    public int stackSize;
 
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        System.out.println("STACKS");
-
-        System.out.print("Enter stack size: ");
-        stackSize = s.nextInt();
-        stack = new int[stackSize];
-
-        while (true) {
-            System.out.println("\n[A]Push | [B]Pop | [C]IsEmpty | [D]IsFull | [E]Peek | [F]Display [X]Exit");
-            System.out.print("Choose option: ");
-            String option = s.next().toUpperCase();
-
-            switch (option) {
-                case "A":
-                    push();
-                    break;
-                case "B":
-                    pop();
-                    break;
-                case "C":
-                    isEmpty();
-                    break;
-                case "D":
-                    isFull();
-                    break;
-                case "E":
-                    peek();
-                    break;
-                case "F":
-                    display();
-                    break;
-                case "X":
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("Invalid option.");
-                    break;
-            }
-        }
+    public stacks(Integer[] stack, int stackSize) {
+        this.stackList = Arrays.asList(stack);
+        this.stackSize = stackSize;
     }
 
-    static void push() {
-        Scanner s = new Scanner(System.in);
+    public void push(int value) {
         if (top == stackSize - 1) { // MEANING LANG NITO IS CHECK KUNG FULL 
-            System.out.println("Stack is full. Cannot push.");
+            System.out.println("Overflow!!");
+            DisplayElements();
         } else {
             System.out.print("Enter value to push: ");
-            int value = s.nextInt();
-            stack[++top] = value; // INCREMENT TOP and ADD VALUE
+            stackList.set(++top, value);
             System.out.println("Pushed: " + value);
+            DisplayElements();
         }
     }
 
-    static void pop() {
+    public void pop() {
         if (top == -1) { // ETO NAMAN CHECK KUNG EMPTY
-            System.out.println("Stack is empty. Cannot pop.");
+            System.out.println("Underflow!!");
+            DisplayElements();
         } else {
-            int value = stack[top--]; // GET VALUE and DECREMENT TOP
+            int value = stackList.get(top);
+            stackList.set(top, null);
+            top--;
+            // GET VALUE and DECREMENT TOP
             System.out.println("Popped: " + value);
+            DisplayElements();
         }
     }
 
-    static void isEmpty() {
+    public boolean isEmpty() {
         if (top == -1) {  
-            System.out.println("Stack is empty.");
+            return true;
         } else {
-            System.out.println("Stack is not empty.");
+            return false;
         }
     }
 
-    static void isFull() {
+    public boolean isFull() {
         if (top == stackSize - 1) { 
-            System.out.println("Stack is full.");
+            return true;
         } else {
-            System.out.println("Stack is not full.");
+            return false;
         }
     }
 
-    static void peek() {
+    public int peek() {
         if (top == -1) {
-            System.out.println("Stack is empty. Cannot peek.");
+            return 0;
         } else {
-            System.out.println("Top element: " + stack[top]);
+            return stackList.get(top);
         }
     }
 
-    static void display() {
-        if (top == -1) {
-            System.out.println("Stack is empty.");
-        } else {
-            System.out.print("Stack elements: ");
-            for (int i = 0; i <= top; i++) { 
-                System.out.print(stack[i] + " ");
-            }
-            System.out.println();
+    public void DisplayElements() {
+        System.out.println("Elements: ");
+        for (int i = stackSize-1; i >= 0; i--) {
+            if(stackList.get(i) == null) continue;
+            System.out.println(stackList.get(i));
         }
+
+        System.out.println();
     }
 }

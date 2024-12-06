@@ -3,16 +3,6 @@ import java.util.Scanner;
 
 class GroupExercise {
 
-    public class Stacks {
-        private int[] givenArray;
-
-        public Stacks(int[] arr) {
-            this.givenArray = arr;
-        }
-
-        // Methods here
-    }
-
     public class Queues {
 
         private int[] givenArray;
@@ -32,6 +22,7 @@ class GroupExercise {
         public void Enqueue(int x) {
             if (this.isFull()) {
                 System.out.println("Overflow!");
+                DisplayElements();
             } else { // Performs enqueue if the queue is not full
                 this.givenArray[this.RightIndex] = x;
                 this.RightIndex++;
@@ -42,6 +33,7 @@ class GroupExercise {
         public void Dequeue() {
             if (this.isEmpty()) {
                 System.out.println("Underflow!");
+                DisplayElements();
             } else { // Performs dequeue if the queue is not empty
                 this.givenArray[this.LeftIndex] = 0;
                 this.LeftIndex += 1;
@@ -63,7 +55,9 @@ class GroupExercise {
         }
 
         public void DisplayElements() {
+            System.out.print("Elements: ");
             for (int i : this.givenArray) {
+                if(i == 0) {System.out.print(""); continue;}
                 System.out.print(i + " ");
             }
             System.out.println();
@@ -103,7 +97,7 @@ class GroupExercise {
             return "\nInvalid input";
         }
 
-        public static void StackOperations(Stacks stack, Scanner scanner) {
+        public static void StackOperations(stacks stack, Scanner scanner) {
             char operation;
 
             do {
@@ -113,31 +107,31 @@ class GroupExercise {
 
                 switch (operation) {
                     case 'A':
-                        // System.out.print("Enter value to Push: ");
-                        // stack.Push(scanner.nextInt());
-                        // scanner.nextLine();
+                        System.out.print("Enter value to Push: ");
+                        stack.push(scanner.nextInt());
+                        scanner.nextLine();
                         break;
 
                     case 'B':
-                        // stack.Pop();
+                        stack.pop();
                         break;
 
                     case 'C':
-                        // String promptIsEmpty = stack.isEmpty() == true ? "empty." : "not empty.";
-                        // System.out.print("Stack is " + promptIsEmpty + "\n");
+                        String promptIsEmpty = stack.isEmpty() == true ? "empty." : "not empty.";
+                        System.out.print("Stack is " + promptIsEmpty + "\n");
                         break;
 
                     case 'D':
-                        // String promptIsFull = stack.isFull() == true ? "full." : "not full.";
-                        // System.out.print("Stack is " + promptIsFull + "\n");
+                        String promptIsFull = stack.isFull() == true ? "full." : "not full.";
+                        System.out.print("Stack is " + promptIsFull + "\n");
                         break;
 
                     case 'E':
-                        // if (stack.isEmpty()) {
-                        //     System.out.println("Stack is empty.");
-                        // } else {
-                        //     System.out.println("Element at top:  " + stack.Peek() + "\n");
-                        // }
+                        if (stack.isEmpty()) {
+                            System.out.println("Stack is empty.");
+                        } else {
+                            System.out.println("Element at top:  " + stack.peek() + "\n");
+                        }
                         break;
 
                     case 'X':
@@ -221,8 +215,9 @@ class GroupExercise {
 
             switch (userResponse) {
                 case 'S':
-                    // Stacks stack = exercise.new Stacks(new int[arraySize]);
-                    // Prompts.StackOperations(stack, scanner);
+                stacks stack = new stacks(new Integer[arraySize], arraySize);
+                Prompts.StackOperations(stack, scanner);
+                
                     break;
 
                 case 'Q':
